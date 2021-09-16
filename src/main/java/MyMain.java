@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class MyMain {
     // Warm-up: Returns true if the char is a lowercase
     // letter or uppercase letter
@@ -7,8 +9,7 @@ public class MyMain {
     //     isLetter('?') => false
     //     isLetter('4') => false
     public static boolean isLetter(char c) {
-        // REPLACE WITH YOUR CODE HERE
-        return false;
+        return(c>='A' && c<='z');
     }
 
     // This method is given two chars as input, c1 and c2
@@ -21,7 +22,12 @@ public class MyMain {
     //                             'f'
     //                             'g'
     public static void printChars(char c1, char c2) {
-        // REPLACE WITH YOUR CODE HERE
+        char out;
+        int numchars = c2-c1;
+        for(int i=0; i<=numchars; i++) {
+            out = (char) (c1+i);
+            System.out.println(out);
+        }
     }
 
     // Given a char ch, and returns the next letter in the alphabet.
@@ -34,8 +40,9 @@ public class MyMain {
     //     nextLetter('a') => 'b'
     //     nextLetter('z') => 'a'
     public static char nextLetter(char ch) {
-        // REPLACE WITH YOUR CODE HERE
-        return ' ';
+        if(ch=='Z') return 'A';
+        if(ch=='z') return 'a';
+        return (char) (ch+1);
     }
 
     // Similar to the previous example, the method is given a char ch. However, the method
@@ -46,8 +53,14 @@ public class MyMain {
     //     nextNextNextLetter('a') => 'd'
     //     nextNextNextLetter('z') => 'c'
     public static char nextNextNextLetter(char ch) {
-        // REPLACE WITH YOUR CODE HERE
-        return ' ';
+        int asciiOut = ch+3;
+        if(ch>='A' && ch<='Z') {
+            if(asciiOut>'Z') return (char) (asciiOut-26);
+            return (char) asciiOut;
+        } else {
+            if(asciiOut>'z') return (char) (asciiOut-26);
+            return (char) asciiOut;
+        }
     }
 
 
@@ -81,5 +94,6 @@ public class MyMain {
         System.out.println(nextNextNextLetter('Z')); // 'C'
         System.out.println(nextNextNextLetter('a')); // 'd'
         System.out.println(nextNextNextLetter('z')); // 'c'
+
     }
 }
